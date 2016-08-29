@@ -2,8 +2,6 @@ package fr.pizzeria.model;
 
 public class Pizza {
 
-	private static int NbPizza;
-
 	private String code;
 	private String nom;
 	private double prix;

@@ -16,6 +16,11 @@ public class Menu {
 		this.actions.put(2, new AjouterPizzaAction(helper));
 		this.actions.put(3, new ModifierPizzaAction(helper));
 		this.actions.put(4, new SupprimerPizzaAction(helper));
+		this.actions.put(5, new ListerClient(helper));
+		this.actions.put(6, new AjouterClientAction(helper));
+		this.actions.put(7, new CrediterClientAction(helper));
+		this.actions.put(8, new DebiterClientAction(helper));
+		this.actions.put(9, new ListerLivreur(helper));
 
 		this.ihmHelper = helper;
 	}

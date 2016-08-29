@@ -3,17 +3,25 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.exception.SaisieEntierException;
+import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Livreur;
+import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 
 public class IhmHelper {
 
-	private Stockage stockage;
+	private Stockage<Pizza> stockagePizza;
+	private Stockage<Client> stockageClient;
+	private Stockage<Livreur> stockageLivreur;
 	private Scanner scanner;
 
-	public IhmHelper(Stockage stockage, Scanner scanner) {
+	public IhmHelper(Stockage<Pizza> stockage, Stockage<Client> stockageC, Stockage<Livreur> stockageL,
+			Scanner scanner) {
 		super();
-		this.stockage = stockage;
+		this.stockagePizza = stockage;
 		this.scanner = scanner;
+		this.stockageClient = stockageC;
+		this.stockageLivreur = stockageL;
 	}
 
 	public int saisirEntier() throws SaisieEntierException {
@@ -25,12 +33,22 @@ public class IhmHelper {
 		}
 	}
 
-	public Stockage getStockage() {
-		return stockage;
+	public Stockage<Pizza> getStockagePizza() {
+		return stockagePizza;
 	}
 
 	public Scanner getScanner() {
 		return scanner;
+	}
+
+	public Stockage<Client> getStockageClient() {
+		// TODO Auto-generated method stub
+		return stockageClient;
+	}
+
+	public Stockage<Livreur> getStockageLivreur() {
+		// TODO Auto-generated method stub
+		return stockageLivreur;
 	}
 
 }
