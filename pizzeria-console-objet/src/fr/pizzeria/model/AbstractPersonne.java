@@ -1,6 +1,6 @@
 package fr.pizzeria.model;
 
-public abstract class AbstractPersonne {
+public abstract class AbstractPersonne implements CompteStat {
 
 	private Integer id;
 	private String nom;

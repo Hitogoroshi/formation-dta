@@ -5,6 +5,8 @@ import fr.pizzeria.exception.DebitException;
 
 public class Client extends AbstractPersonne {
 
+	public static final String PREFIX_ID = "C";
+
 	public Client(int id, String nom, String prenom, double solde) {
 		super(id, nom, prenom, solde);
 		// TODO Auto-generated constructor stub
@@ -26,6 +28,11 @@ public class Client extends AbstractPersonne {
 			throw new DebitException();
 		}
 		this.solde = nouveauSolde;
+	}
+
+	public String toString() {
+
+		return PREFIX_ID + super.toString();
 	}
 
 }

@@ -24,6 +24,7 @@ public class CrediterClientAction extends Action {
 				clientTrouve = clientEnCours;
 			}
 		}
+
 		if (clientTrouve == null) {
 			System.out.println("Client non trouver veuillez recommencer");
 		} else {

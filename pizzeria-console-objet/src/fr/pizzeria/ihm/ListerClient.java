@@ -7,7 +7,7 @@ import fr.pizzeria.model.Client;
 public class ListerClient extends Action {
 
 	public ListerClient(IhmHelper helper) {
-		super("lister les clients", helper);
+		super("Lister les clients", helper);
 		// TODO Auto-generated constructor stub
 	}
 

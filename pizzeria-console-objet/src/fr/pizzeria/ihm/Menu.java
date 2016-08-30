@@ -21,6 +21,8 @@ public class Menu {
 		this.actions.put(7, new CrediterClientAction(helper));
 		this.actions.put(8, new DebiterClientAction(helper));
 		this.actions.put(9, new ListerLivreur(helper));
+		this.actions.put(10, new AfficheStats(helper));
+		this.actions.put(11, new FaireVirementAction(helper));
 
 		this.ihmHelper = helper;
 	}

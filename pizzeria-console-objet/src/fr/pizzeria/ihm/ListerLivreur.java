@@ -7,7 +7,7 @@ import fr.pizzeria.model.Livreur;
 public class ListerLivreur extends Action {
 
 	public ListerLivreur(IhmHelper helper) {
-		super("liste de liveurs", helper);
+		super("Lister les liveurs", helper);
 		// TODO Auto-generated constructor stub
 	}
 
