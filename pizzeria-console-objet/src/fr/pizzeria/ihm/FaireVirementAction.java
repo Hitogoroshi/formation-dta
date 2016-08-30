@@ -6,10 +6,7 @@ import java.util.List;
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
 import fr.pizzeria.model.AbstractPersonne;
-import fr.pizzeria.model.Client;
 import fr.pizzeria.model.CompteStat;
-import fr.pizzeria.model.Livreur;
-import fr.pizzeria.service.Stockage;
 
 public class FaireVirementAction extends Action {
 
@@ -30,22 +27,22 @@ public class FaireVirementAction extends Action {
 
 		System.out.println("choisir l'id de la personne qui realise le virement et vas donc etre debiter");
 		String id1 = helper.getScanner().next();
-		AbstractPersonne personne1 = findPersonne(id1);
+		AbstractPersonne personne1 = helper.findPersonne(id1);
 		System.out.println("choisir l'id de la personne vers ou est realiser le virement et vas donc etre crediter");
 		String id2 = helper.getScanner().next();
-		AbstractPersonne personne2 = findPersonne(id2);
+		AbstractPersonne personne2 = helper.findPersonne(id2);
 		System.out.println("Entrez le montant à debiter au premier compte et crediter au second");
 		double montant = helper.getScanner().nextInt();
 
 		if (id1.equals(id2)) {
-			System.out.println("Entrez des individus différents !");
+			System.out.println("Entrez des individus différents !\n");
 		} else if (personne1 == null || personne2 == null) {
-			System.out.println("xxx");
+			System.out.println("Individu 1 ou individu 2 non trouver\n");
 		} else {
 			try {
 				personne1.debiterCompte(montant);
 				personne2.crediterCompte(montant);
-				System.out.println("Virement realiser avec succes");
+				System.out.println("Virement realiser avec succes\n");
 			} catch (DebitException e) {
 				System.out.println(e.getMessage());
 			} catch (CreditException e) {
@@ -54,29 +51,6 @@ public class FaireVirementAction extends Action {
 
 		}
 
-	}
-
-	public AbstractPersonne findPersonne(String idRecherche) {
-
-		if (idRecherche.startsWith(Livreur.PREFIX_ID)) {
-			return find(idRecherche, Livreur.PREFIX_ID, helper.getStockageLivreur());
-
-		} else if (idRecherche.startsWith(Client.PREFIX_ID)) {
-			return find(idRecherche, Client.PREFIX_ID, helper.getStockageClient());
-		}
-		return null;
-	}
-
-	private AbstractPersonne find(String idRecherche, String prefixId, Stockage<? extends AbstractPersonne> stockage) {
-		String id = idRecherche.replace(prefixId, "");
-		// "1223" -> 1223
-		Integer idInt = Integer.valueOf(id);
-		for (AbstractPersonne personne : stockage.findAll()) {
-			if (personne.getId() == idInt) {
-				return personne;
-			}
-		}
-		return null;
 	}
 
 }

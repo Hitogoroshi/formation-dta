@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.exception.SaisieEntierException;
+import fr.pizzeria.model.AbstractPersonne;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
@@ -31,6 +32,29 @@ public class IhmHelper {
 		} catch (NumberFormatException e) {
 			throw new SaisieEntierException(e);
 		}
+	}
+
+	public AbstractPersonne findPersonne(String idRecherche) {
+
+		if (idRecherche.startsWith(Livreur.PREFIX_ID)) {
+			return find(idRecherche, Livreur.PREFIX_ID, this.getStockageLivreur());
+
+		} else if (idRecherche.startsWith(Client.PREFIX_ID)) {
+			return find(idRecherche, Client.PREFIX_ID, this.getStockageClient());
+		}
+		return null;
+	}
+
+	private AbstractPersonne find(String idRecherche, String prefixId, Stockage<? extends AbstractPersonne> stockage) {
+		String id = idRecherche.replace(prefixId, "");
+		// "1223" -> 1223
+		Integer idInt = Integer.valueOf(id);
+		for (AbstractPersonne personne : stockage.findAll()) {
+			if (personne.getId() == idInt) {
+				return personne;
+			}
+		}
+		return null;
 	}
 
 	public Stockage<Pizza> getStockagePizza() {

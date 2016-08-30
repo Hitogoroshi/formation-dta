@@ -1,7 +1,9 @@
 package fr.pizzeria.ihm;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import fr.pizzeria.model.CompteStat;
 
@@ -17,24 +19,17 @@ public class AfficheStats extends Action {
 		stats.addAll(helper.getStockageLivreur().findAll());
 		stats.addAll(helper.getStockageClient().findAll());
 
-		int nbCompte = 0;
-		double moyenne = 0;
-		double totSolde = 0;
-		double minSolde = 5000;
-		double maxSolde = 0;
-		for (CompteStat personneEnCours : stats) {
-			if (personneEnCours.getSolde() > maxSolde) {
-				maxSolde = personneEnCours.getSolde();
-			}
-			if (personneEnCours.getSolde() < minSolde) {
-				minSolde = personneEnCours.getSolde();
-			}
-			totSolde += personneEnCours.getSolde();
-			nbCompte++;
-		}
-		moyenne = totSolde / nbCompte;
-		System.out.println("Nombre de compte :" + nbCompte + "\n Solde total des comptes :" + totSolde
-				+ " euro\n Moyenne des soldes :" + moyenne + "\n Solde minimum :" + minSolde + "\n Solde maximum :"
+		Long nbCompte = stats.stream().collect(Collectors.counting());
+		double moyenne = stats.stream().collect(Collectors.averagingDouble(CompteStat::getSolde));
+		double totSolde = stats.stream().collect(Collectors.counting());
+
+		double minSolde = stats.stream().collect(Collectors.minBy(Comparator.comparing(CompteStat::getSolde))).get()
+				.getSolde();
+		double maxSolde = stats.stream().collect(Collectors.maxBy(Comparator.comparing(CompteStat::getSolde))).get()
+				.getSolde();
+
+		System.out.println("Nombre de compte :" + nbCompte + "\nSolde total des comptes :" + totSolde
+				+ " euro\nMoyenne des soldes :" + moyenne + "\nSolde minimum :" + minSolde + "\nSolde maximum :"
 				+ maxSolde);
 	}
 
