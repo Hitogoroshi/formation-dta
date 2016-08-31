@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import fr.pizzeria.model.Livreur;
@@ -11,12 +12,11 @@ public class ListerLivreur extends Action {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void execute() {
+	public void execute() throws IOException {
 		System.out.println("**** Liste de Livreurs ****");
 		Collection<Livreur> livreurs = this.helper.getStockageLivreur().findAll();
-		for (Livreur LivreurEnCours : livreurs) {
-			System.out.println(LivreurEnCours.toString());
-		}
+		// Java 8
+		livreurs.forEach(System.out::println);
 		System.out.println("\n");
 	}
 

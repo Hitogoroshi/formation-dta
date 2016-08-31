@@ -1,33 +1,42 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.pizzeria.exception.SaisieEntierException;
+import fr.pizzeria.exception.SaisieNombreException;
 
 public class Menu {
 
+	// Variable choixsortir qui est fixer ici affin que en modifiant ici ça
+	// modifie partout
 	private static final int CHOIX_SORTIR = 99;
+	// Creation de la map qui sera utiliser pour mettre des actions
 	private Map<Integer, Action> actions = new HashMap<>();
 	private IhmHelper ihmHelper;
 
+	// Map des actions que le menu peut executer
 	public Menu(IhmHelper helper) {
 		this.actions.put(1, new ListerPizzaAction(helper));
-		this.actions.put(2, new AjouterPizzaAction(helper));
-		this.actions.put(3, new ModifierPizzaAction(helper));
-		this.actions.put(4, new SupprimerPizzaAction(helper));
-		this.actions.put(5, new ListerClient(helper));
-		this.actions.put(6, new AjouterClientAction(helper));
-		this.actions.put(7, new CrediterClientAction(helper));
-		this.actions.put(8, new DebiterClientAction(helper));
+		this.actions.put(2, new GroupCatePizza(helper));
+		this.actions.put(3, new PlusCherPizza(helper));
+		this.actions.put(4, new AjouterPizzaAction(helper));
+		this.actions.put(5, new ModifierPizzaAction(helper));
+		this.actions.put(6, new SupprimerPizzaAction(helper));
+		this.actions.put(7, new ListerClient(helper));
+		this.actions.put(8, new AjouterClientAction(helper));
 		this.actions.put(9, new ListerLivreur(helper));
-		this.actions.put(10, new AfficheStats(helper));
-		this.actions.put(11, new FaireVirementAction(helper));
+		this.actions.put(10, new CrediterClientAction(helper));
+		this.actions.put(11, new DebiterClientAction(helper));
+		this.actions.put(12, new FaireVirementAction(helper));
+		this.actions.put(13, new AfficheStats(helper));
 
 		this.ihmHelper = helper;
 	}
 
-	public void start() {
+	// Methode de lancement du Menu on relance le menu tant que une action
+	// correcte n'a pas ete donnée ou que l'on a pas quitter
+	public void start() throws IOException {
 		boolean result = false;
 		do {
 			affichageM();
@@ -35,6 +44,7 @@ public class Menu {
 		} while (!result);
 	}
 
+	// Methode d'affichage du menu a l'aide d'une boucle Java 8
 	public void affichageM() {
 		System.out.println("***** Pizzeria Administration *****");
 
@@ -44,10 +54,10 @@ public class Menu {
 			System.out.println(numero + " " + libelleAction);
 		});
 
-		System.out.println(CHOIX_SORTIR + ". Quitter" + "\n");
+		System.out.println(CHOIX_SORTIR + " Quitter" + "\n");
 	}
 
-	public boolean choisir() {
+	public boolean choisir() throws IOException {
 		System.out.println("Veuillez choisir une option");
 		int choix = 0;
 		try {
@@ -64,7 +74,7 @@ public class Menu {
 				LaBonneAction.execute();
 
 			}
-		} catch (SaisieEntierException e) {
+		} catch (SaisieNombreException e) {
 			System.out.println(e.getMessage());
 		}
 

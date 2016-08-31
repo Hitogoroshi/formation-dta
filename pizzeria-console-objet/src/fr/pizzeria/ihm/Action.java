@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
+
 public abstract class Action {
 
 	private String libelle;
@@ -11,7 +13,7 @@ public abstract class Action {
 		this.helper = helper;
 	}
 
-	abstract public void execute();
+	abstract public void execute() throws IOException;
 
 	public String getLibelle() {
 		return libelle;

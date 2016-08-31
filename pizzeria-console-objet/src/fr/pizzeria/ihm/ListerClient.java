@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import fr.pizzeria.model.Client;
@@ -11,7 +12,7 @@ public class ListerClient extends Action {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void execute() {
+	public void execute() throws IOException {
 		System.out.println("**** Liste de Clients ****");
 		Collection<Client> clients = this.helper.getStockageClient().findAll();
 

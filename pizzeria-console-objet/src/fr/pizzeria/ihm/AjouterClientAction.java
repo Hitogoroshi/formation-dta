@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
+
 import fr.pizzeria.model.Client;
 
 public class AjouterClientAction extends Action {
@@ -9,7 +11,7 @@ public class AjouterClientAction extends Action {
 		super("Ajouter un client", helper);
 	}
 
-	public void execute() {
+	public void execute() throws IOException {
 
 		// récuperation de la saisie
 

@@ -1,5 +1,6 @@
 package fr.pizzeria.console;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import fr.pizzeria.ihm.IhmHelper;
@@ -10,15 +11,15 @@ import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 import fr.pizzeria.service.StockageClient;
 import fr.pizzeria.service.StockageLivreur;
-import fr.pizzeria.service.StockagePizzaTableau;
+import fr.pizzeria.service.StockagePizzaFichier;
 
 public class PizzeriaAdminConsoleApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Scanner scanner = new Scanner(System.in);
 
-		Stockage<Pizza> stockagePizza = new StockagePizzaTableau();
+		Stockage<Pizza> stockagePizza = new StockagePizzaFichier();
 		Stockage<Client> stockageClient = new StockageClient();
 		Stockage<Livreur> stockageLivreur = new StockageLivreur();
 

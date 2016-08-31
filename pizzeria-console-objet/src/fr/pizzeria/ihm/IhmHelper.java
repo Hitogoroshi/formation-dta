@@ -1,8 +1,10 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
+import java.util.Optional;
 import java.util.Scanner;
 
-import fr.pizzeria.exception.SaisieEntierException;
+import fr.pizzeria.exception.SaisieNombreException;
 import fr.pizzeria.model.AbstractPersonne;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
@@ -25,16 +27,25 @@ public class IhmHelper {
 		this.stockageLivreur = stockageL;
 	}
 
-	public int saisirEntier() throws SaisieEntierException {
+	public int saisirEntier() throws SaisieNombreException {
 		try {
 			String saisie = scanner.next();
 			return Integer.parseInt(saisie);
 		} catch (NumberFormatException e) {
-			throw new SaisieEntierException(e);
+			throw new SaisieNombreException(e);
 		}
 	}
 
-	public AbstractPersonne findPersonne(String idRecherche) {
+	public double saisirDouble() throws SaisieNombreException {
+		try {
+			String saisie = scanner.next();
+			return Double.parseDouble(saisie);
+		} catch (NumberFormatException e) {
+			throw new SaisieNombreException(e);
+		}
+	}
+
+	public Optional<? extends AbstractPersonne> findPersonne(String idRecherche) throws IOException {
 
 		if (idRecherche.startsWith(Livreur.PREFIX_ID)) {
 			return find(idRecherche, Livreur.PREFIX_ID, this.getStockageLivreur());
@@ -45,16 +56,16 @@ public class IhmHelper {
 		return null;
 	}
 
-	private AbstractPersonne find(String idRecherche, String prefixId, Stockage<? extends AbstractPersonne> stockage) {
-		String id = idRecherche.replace(prefixId, "");
-		// "1223" -> 1223
-		Integer idInt = Integer.valueOf(id);
-		for (AbstractPersonne personne : stockage.findAll()) {
-			if (personne.getId() == idInt) {
-				return personne;
-			}
-		}
-		return null;
+	private Optional<? extends AbstractPersonne> find(String idRecherche, String prefixId,
+			Stockage<? extends AbstractPersonne> stockage) throws IOException {
+
+		return stockage.findAll().stream().filter(t -> t.getId() == Integer.valueOf(idRecherche.replace(prefixId, "")))
+				.findFirst();
+
+		/*
+		 * Vieux For : for (AbstractPersonne personne : stockage.findAll()) { if
+		 * (personne.getId() == idInt) { return personne; } }
+		 */
 	}
 
 	public Stockage<Pizza> getStockagePizza() {
