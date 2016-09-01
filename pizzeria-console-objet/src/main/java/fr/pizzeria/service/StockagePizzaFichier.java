@@ -1,6 +1,8 @@
 package fr.pizzeria.service;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
@@ -9,7 +11,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class StockagePizzaFichier implements Stockage<Pizza> {
@@ -17,23 +21,23 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 	@Override
 	public Collection<Pizza> findAll() throws IOException {
 
-		try {
-			// Création chemin d'un fichier data/pizza/test.txt
-			// Path cheminFichier = Paths.get("data", "pizza", "test.txt");
-
+		// try avec un arguement il vas fermer le fichier a la fin list.close();
+		try (Stream<Path> list = Files.list(Paths.get("data", "Pizza"))) {
 			// parcourir le répertoire data/pizza
-			return Files.list(Paths.get("data", "Pizza")).map(cheminFichier -> {
+
+			return list.map(cheminFichier -> {
 
 				Pizza p = new Pizza();
 				try {
-					Optional<String> opt = Files.lines(cheminFichier).findFirst();
+					Optional<String> opt = Files.lines(cheminFichier, Charset.forName("Cp1252")).findFirst();
 					String line = opt.get();
 
 					// tab[0], tab[1]
 					String[] tab = line.split(";");
+					p.setCode(cheminFichier.toFile().getName().replaceAll(".txt", ""));
 					p.setNom(tab[0]);
-					p.setPrix(tab[1]);
-					p.setCategorie(tab[2]);
+					p.setPrix(Double.valueOf(tab[1]));
+					p.setCategorie(CategoriePizza.valueOf(tab[2]));
 
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -68,19 +72,33 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
 		Files.write(cheminFichier,
-				Arrays.asList(newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategorie()));
+				Arrays.asList(newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategorie().name()));
 
 	}
 
 	@Override
-	public void update(Pizza editPizza, String code) {
+	public void update(Pizza editPizza, String code) throws IOException {
 		// Modifier un fichier pizza
+		// Création chemin d'un fichier data/pizza/test.txt
+		Path cheminFichier = Paths.get("data", "pizza", code + ".txt");
+
+		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
+		Files.write(cheminFichier,
+				Arrays.asList(editPizza.getNom() + ";" + editPizza.getPrix() + ";" + editPizza.getCategorie()));
+
+		// Renommer le fichier
+		// (code + ".txt").renameTo.toPath(editPizza.getCode() + ".txt");
 
 	}
 
 	@Override
-	public void delete(String ancienCode) {
-		// Supprimer un fichier pizza
+	public void delete(String ancienCode) throws IOException {
+		try {
+			// Supprimer un fichier pizza
+			Files.deleteIfExists(Paths.get("data", "Pizza", ancienCode + ".txt"));
+		} catch (AccessDeniedException e) {
+			e.printStackTrace();
+		}
 
 	}
 

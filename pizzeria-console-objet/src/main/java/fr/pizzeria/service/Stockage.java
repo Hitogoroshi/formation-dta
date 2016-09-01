@@ -9,8 +9,8 @@ public interface Stockage<T> {
 
 	void save(T newPizza) throws IOException;
 
-	void update(T editPizza, String code);
+	void update(T editPizza, String code) throws IOException;
 
-	void delete(String ancienCode);
+	void delete(String ancienCode) throws IOException;
 
 }

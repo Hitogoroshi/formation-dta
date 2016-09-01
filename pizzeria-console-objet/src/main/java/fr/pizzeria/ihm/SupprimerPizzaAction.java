@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
+
 public class SupprimerPizzaAction extends Action {
 
 	public SupprimerPizzaAction(IhmHelper helper) {
@@ -7,7 +9,7 @@ public class SupprimerPizzaAction extends Action {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		System.out.println("Vous voulez supprimez une pizza veuillez choisir laquelle (Code)");
 		String ancienCode = helper.getScanner().next();
 		helper.getStockagePizza().delete(ancienCode);

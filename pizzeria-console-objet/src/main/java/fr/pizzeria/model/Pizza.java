@@ -50,15 +50,4 @@ public class Pizza {
 	public Pizza() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public void setPrix(String string) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void setCategorie(String string) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

@@ -1,7 +1,10 @@
 package fr.pizzeria.console;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Scanner;
+
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 import fr.pizzeria.ihm.IhmHelper;
 import fr.pizzeria.ihm.Menu;
@@ -24,6 +27,10 @@ public class PizzeriaAdminConsoleApp {
 		Stockage<Livreur> stockageLivreur = new StockageLivreur();
 
 		IhmHelper helper = new IhmHelper(stockagePizza, stockageClient, stockageLivreur, scanner);
+
+		// afficher date et heure
+		Calendar date = Calendar.getInstance();
+		System.out.println(DateFormatUtils.format(date, "dd/MM - HH:mm"));
 
 		// Afficher le Menu
 

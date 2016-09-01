@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import fr.pizzeria.exception.SaisieNombreException;
@@ -13,7 +14,7 @@ public class ModifierPizzaAction extends Action {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 
 		System.out.println("Vous voulez modifier une pizza veuillez choisir laquelle (Code)");
 		String ancienCode = helper.getScanner().next();
