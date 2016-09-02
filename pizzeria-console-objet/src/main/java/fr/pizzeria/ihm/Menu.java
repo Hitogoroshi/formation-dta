@@ -1,8 +1,13 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.reflections.Reflections;
 
 import fr.pizzeria.exception.SaisieNombreException;
 
@@ -17,19 +22,38 @@ public class Menu {
 
 	// Map des actions que le menu peut executer
 	public Menu(IhmHelper helper) {
-		this.actions.put(1, new ListerPizzaAction(helper));
-		this.actions.put(2, new GroupCatePizza(helper));
-		this.actions.put(3, new PlusCherPizza(helper));
-		this.actions.put(4, new AjouterPizzaAction(helper));
-		this.actions.put(5, new ModifierPizzaAction(helper));
-		this.actions.put(6, new SupprimerPizzaAction(helper));
-		this.actions.put(7, new ListerClient(helper));
-		this.actions.put(8, new AjouterClientAction(helper));
-		this.actions.put(9, new ListerLivreur(helper));
-		this.actions.put(10, new CrediterClientAction(helper));
-		this.actions.put(11, new DebiterClientAction(helper));
-		this.actions.put(12, new FaireVirementAction(helper));
-		this.actions.put(13, new AfficheStats(helper));
+		/*
+		 * this.actions.put(1, new ListerPizzaAction(helper));
+		 * this.actions.put(2, new GroupCatePizza(helper)); this.actions.put(3,
+		 * new PlusCherPizza(helper)); this.actions.put(4, new
+		 * AjouterPizzaAction(helper)); this.actions.put(5, new
+		 * ModifierPizzaAction(helper)); this.actions.put(6, new
+		 * SupprimerPizzaAction(helper)); this.actions.put(7, new
+		 * ListerClient(helper)); this.actions.put(8, new
+		 * AjouterClientAction(helper)); this.actions.put(9, new
+		 * ListerLivreur(helper)); this.actions.put(10, new
+		 * CrediterClientAction(helper)); this.actions.put(11, new
+		 * DebiterClientAction(helper)); this.actions.put(12, new
+		 * FaireVirementAction(helper)); this.actions.put(13, new
+		 * AfficheStats(helper));
+		 */
+		// Reflection
+		Reflections reflection = new Reflections();
+		Set<Class<?>> annotated = reflection.getTypesAnnotatedWith(AnnotationAction.class);
+		// permet de manipuler des entier si j'ai plusieurs processus qui
+		// arrivent en meme temps
+		// je veux incrementer et je suis sure que cela vas marcher
+		AtomicInteger yournotkillme = new AtomicInteger(0);
+
+		annotated.stream().forEach(uneClasse -> {
+			try {
+				Constructor<?> constructor = uneClasse.getConstructor(IhmHelper.class);
+				Object action = constructor.newInstance(helper);
+				this.actions.put(yournotkillme.incrementAndGet(), (Action) action);
+			} catch (Exception e) {
+
+			}
+		});
 
 		this.ihmHelper = helper;
 	}

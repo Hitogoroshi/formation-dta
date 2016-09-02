@@ -7,6 +7,7 @@ import fr.pizzeria.exception.SaisieNombreException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@AnnotationAction
 public class AjouterPizzaAction extends Action {
 
 	public AjouterPizzaAction(IhmHelper helper) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import fr.pizzeria.model.Client;
 
+@AnnotationAction
 public class AjouterClientAction extends Action {
 
 	public AjouterClientAction(IhmHelper helper) {

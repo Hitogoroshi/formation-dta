@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import fr.pizzeria.model.CompteStat;
 
+@AnnotationAction
 public class AfficheStats extends Action {
 
 	public AfficheStats(IhmHelper helper) {
