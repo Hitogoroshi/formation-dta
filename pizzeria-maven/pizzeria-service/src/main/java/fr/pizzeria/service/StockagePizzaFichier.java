@@ -98,7 +98,7 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 			// Supprimer un fichier pizza
 			Files.deleteIfExists(Paths.get("data", "Pizza", ancienCode + ".txt"));
 		} catch (AccessDeniedException e) {
-			e.printStackTrace()FAUTES;
+			e.printStackTrace();
 		}
 
 	}
