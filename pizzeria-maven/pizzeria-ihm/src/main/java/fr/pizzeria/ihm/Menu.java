@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.pizzeria.exception.SaisieNombreException;
+import fr.pizzeria.exception.ServiceException;
 
 public class Menu {
 
@@ -31,6 +32,7 @@ public class Menu {
 		this.actions.put(11, new DebiterClientAction(helper));
 		this.actions.put(12, new FaireVirementAction(helper));
 		this.actions.put(13, new AfficheStats(helper));
+		this.actions.put(14, new ImporterBdD(helper));
 
 		/*
 		 * Affichage des Menus annoter // Reflection Reflections reflection =
@@ -94,6 +96,8 @@ public class Menu {
 			}
 		} catch (SaisieNombreException e) {
 			System.out.println(e.getMessage());
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
 		}
 
 		return choix == CHOIX_SORTIR;

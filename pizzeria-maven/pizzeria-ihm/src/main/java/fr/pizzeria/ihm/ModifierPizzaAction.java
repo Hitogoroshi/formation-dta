@@ -33,7 +33,7 @@ public class ModifierPizzaAction extends Action {
 			Pizza nouvellePizza = new Pizza(code, nom, prix, categorie);
 			helper.getStockagePizza().update(nouvellePizza, ancienCode);
 
-			System.out.println("Pizza ajouter avec succes" + "\n");
+			System.out.println("Pizza modifier avec succes" + "\n");
 		} catch (SaisieNombreException e) {
 			System.out.println(e.getMessage());
 		} catch (IllegalArgumentException e) {

@@ -13,6 +13,14 @@
 		<groupId>${project.groupId}</groupId>
 		<artifactId>pizzeria-model</artifactId>
 	</dependency>
+  	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-collections4</artifactId>
+</dependency>
 </dependencies>
 
 

@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
-import fr.pizzeria.exception.SaisieCodeException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -32,13 +31,6 @@ public class StockagePizzaTableau implements Stockage<Pizza> {
 	@Override
 	public void save(Pizza newPizza) {
 		this.pizzas.put(newPizza.getCode(), newPizza);
-	}
-
-	public void saisirCode(Pizza newPizza) throws SaisieCodeException {
-		if (newPizza.getCode().length() < 3 || newPizza.getCode().length() > 3) {
-			SaisieCodeException CodeException = new SaisieCodeException("Attention rentrer un code a 3 chiffres");
-			throw CodeException;
-		}
 	}
 
 	@Override

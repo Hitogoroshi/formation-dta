@@ -2,7 +2,6 @@ package fr.pizzeria.service;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
@@ -13,13 +12,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class StockagePizzaFichier implements Stockage<Pizza> {
 
 	@Override
-	public Collection<Pizza> findAll() throws IOException {
+	public Collection<Pizza> findAll() {
 
 		// try avec un arguement il vas fermer le fichier a la fin list.close();
 		try (Stream<Path> list = Files.list(Paths.get("data", "Pizza"))) {
@@ -55,37 +55,46 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 			System.out.println("Fichier non trouver");
 		} catch (IOException e) {
 			// Celle-ci se produit lors d'une erreur d'écriture ou de lecture
-			e.printStackTrace();
+			throw new ServiceException(e);
+
 		}
 
 		return null;
 	}
 
 	@Override
-	public void save(Pizza newPizza) throws IOException {
+	public void save(Pizza newPizza) {
 
 		// Création chemin d'un fichier data/pizza/test.txt
 		Path cheminFichier = Paths.get("data", "Pizza", newPizza.getCode() + ".txt");
 
-		// Création d'un nouveau fichier
-		Files.createFile(cheminFichier);
-
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
-		Files.write(cheminFichier,
-				Arrays.asList(newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategorie().name()));
+		try {
+
+			// Création d'un nouveau fichier
+			Files.createFile(cheminFichier);
+			Files.write(cheminFichier,
+					Arrays.asList(newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategorie().name()));
+		} catch (IOException e) {
+			throw new ServiceException(e);
+		}
 
 	}
 
 	@Override
-	public void update(Pizza editPizza, String code) throws IOException {
+	public void update(Pizza editPizza, String code) {
 		// Modifier un fichier pizza
 		// Création chemin d'un fichier data/pizza/test.txt
 		Path ancienFichier = Paths.get("data", "pizza", code + ".txt");
 		Path nouveauFichier = Paths.get("data", "pizza", editPizza.getCode() + ".txt");
 
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
-		Files.write(ancienFichier,
-				Arrays.asList(editPizza.getNom() + ";" + editPizza.getPrix() + ";" + editPizza.getCategorie().name()));
+		try {
+			Files.write(ancienFichier, Arrays
+					.asList(editPizza.getNom() + ";" + editPizza.getPrix() + ";" + editPizza.getCategorie().name()));
+		} catch (IOException e) {
+			throw new ServiceException(e);
+		}
 
 		// Renommer le fichier
 		ancienFichier.toFile().renameTo(nouveauFichier.toFile());
@@ -93,12 +102,12 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 	}
 
 	@Override
-	public void delete(String ancienCode) throws IOException {
+	public void delete(String ancienCode) {
 		try {
 			// Supprimer un fichier pizza
 			Files.deleteIfExists(Paths.get("data", "Pizza", ancienCode + ".txt"));
-		} catch (AccessDeniedException e) {
-			e.printStackTrace();
+		} catch (IOException e) {
+			throw new ServiceException(e);
 		}
 
 	}

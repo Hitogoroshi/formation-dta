@@ -17,7 +17,11 @@ public class PlusCherPizza extends Action {
 	public void execute() throws IOException {
 
 		helper.getStockagePizza().findAll().stream().collect(Collectors.maxBy(Comparator.comparing(Pizza::getPrix)))
-				.ifPresent(pizza -> System.out.println(pizza.getCode() + " " + pizza.getNom() + " " + pizza.getPrix()));
+				.ifPresent(pizza -> helper.getStockagePizza().findAll().stream()
+						.collect(Collectors.groupingBy(Pizza::getPrix))
+						.get(helper.getStockagePizza().findAll().stream().max(Comparator.comparing(Pizza::getPrix))
+								.get().getPrix())
+						.forEach(p -> System.out.println(p.getCode() + " " + p.getNom() + " " + p.getPrix())));
 
 	}
 
