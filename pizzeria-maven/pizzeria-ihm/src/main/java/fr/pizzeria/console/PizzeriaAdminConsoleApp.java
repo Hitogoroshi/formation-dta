@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 
@@ -20,6 +21,8 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args)
 			throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
 		Scanner scanner = new Scanner(System.in);
 
