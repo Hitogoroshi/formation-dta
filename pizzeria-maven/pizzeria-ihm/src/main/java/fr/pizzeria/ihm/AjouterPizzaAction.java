@@ -17,7 +17,7 @@ public class AjouterPizzaAction extends Action {
 	@Override
 	public void execute() throws IOException {
 
-		// récuperation de la saisie
+		// recuperation de la saisie
 		System.out.println("Vous voulez ajoutez une pizza");
 		System.out.println("Veuillez saisir le code");
 		String code = helper.getScanner().next();

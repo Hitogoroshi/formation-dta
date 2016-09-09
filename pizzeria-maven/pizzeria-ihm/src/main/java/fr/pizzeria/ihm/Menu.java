@@ -9,7 +9,7 @@ import fr.pizzeria.exception.ServiceException;
 
 public class Menu {
 
-	// Variable choixsortir qui est fixer ici affin que en modifiant ici ça
+	// Variable choixsortir qui est fixer ici affin que en modifiant ici
 	// modifie partout
 	private static final int CHOIX_SORTIR = 99;
 	// Creation de la map qui sera utiliser pour mettre des actions
@@ -55,7 +55,7 @@ public class Menu {
 	}
 
 	// Methode de lancement du Menu on relance le menu tant que une action
-	// correcte n'a pas ete donnée ou que l'on a pas quitter
+	// correcte n'a pas ete donnee ou que l'on a pas quitter
 	public void start() throws IOException {
 		boolean result = false;
 		do {

@@ -31,7 +31,10 @@ public class PizzeriaAdminConsoleApp {
 		System.out.println(classeStockagePizza);
 		Class<?> classePizza = Class.forName(classeStockagePizza);
 
+		@SuppressWarnings("unchecked")
+		// On ne peut pas faire autrement ;)
 		Stockage<Pizza> stockagePizza = (Stockage<Pizza>) classePizza.newInstance();
+
 		Stockage<Client> stockageClient = new StockageClient();
 		Stockage<Livreur> stockageLivreur = new StockageLivreur();
 

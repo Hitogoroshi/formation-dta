@@ -1,7 +1,6 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,7 +42,7 @@ public class ImporterBdD extends Action {
 
 					Pizza p = new Pizza();
 					try {
-						Optional<String> opt = Files.lines(cheminFichier, Charset.forName("Cp1252")).findFirst();
+						Optional<String> opt = Files.lines(cheminFichier).findFirst();
 						String line = opt.get();
 
 						// tab[0], tab[1]
@@ -106,8 +105,7 @@ public class ImporterBdD extends Action {
 
 			}
 		} else {
-			System.out.println(
-					"Erreur vous ne pouvez pas utiliser ce menu si vous n'êtes pas en mode stockage en base de donnée");
+			System.out.println("Erreur vous ne pouvez pas utiliser ce menu si vous n'Ãªtes pas en mode de stockage BdD");
 		}
 	}
 }

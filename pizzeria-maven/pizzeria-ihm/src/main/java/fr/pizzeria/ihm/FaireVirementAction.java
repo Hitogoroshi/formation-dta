@@ -31,12 +31,12 @@ public class FaireVirementAction extends Action {
 		System.out.println("choisir l'id de la personne vers ou est realiser le virement et vas donc etre crediter");
 		String id2 = helper.getScanner().next();
 		Optional<? extends AbstractPersonne> personne2 = helper.findPersonne(id2);
-		System.out.println("Entrez le montant à debiter au premier compte et crediter au second");
+		System.out.println("Entrez le montant Ã  debiter au premier compte et crediter au second");
 		try {
 			double montant = helper.saisirDouble();
 
 			if (id1.equals(id2)) {
-				System.out.println("Entrez des individus différents !\n");
+				System.out.println("Entrez des individus diffÃ©rents !\n");
 			} else if (personne1.isPresent() || personne2.isPresent()) {
 				System.out.println("Individu 1 ou individu 2 non trouver\n");
 			} else {

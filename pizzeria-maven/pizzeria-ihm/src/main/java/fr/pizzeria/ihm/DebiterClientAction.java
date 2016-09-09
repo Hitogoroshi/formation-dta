@@ -24,10 +24,10 @@ public class DebiterClientAction extends Action {
 
 		stats.forEach(System.out::println);
 
-		System.out.println("choisir l'id de la personne a debiter");
+		System.out.println("choisir l'id de la personne Ã  debiter");
 		String id = helper.getScanner().next();
 		Optional<? extends AbstractPersonne> personne = helper.findPersonne(id);
-		System.out.println("Entrez le montant à debiter");
+		System.out.println("Entrez le montant Ã  debiter");
 		try {
 			double montant = helper.saisirDouble();
 
@@ -42,22 +42,6 @@ public class DebiterClientAction extends Action {
 		} catch (SaisieNombreException e) {
 			System.out.println(e.getMessage());
 		}
-
-		/*
-		 * Collection<Client> clients =
-		 * this.helper.getStockageClient().findAll();
-		 * System.out.println("Choisir l id du client à debiter"); Integer id =
-		 * helper.getScanner().nextInt(); Client clientTrouve = null;
-		 * 
-		 * for (Client clientEnCours : clients) { if (clientEnCours.getId() ==
-		 * id) { clientTrouve = clientEnCours; } } if (clientTrouve == null) {
-		 * System.out.println("Client non trouver veuillez recommencer"); } else
-		 * { System.out.println("Choisir le montant à debiter"); double montant
-		 * = helper.getScanner().nextDouble(); try {
-		 * clientTrouve.debiterCompte(montant);
-		 * System.out.println("compte debiter avec succes \n"); } catch
-		 * (DebitException e) { System.out.println(e.getMessage()); } }
-		 */
 
 	}
 

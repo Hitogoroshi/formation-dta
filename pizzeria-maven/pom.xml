@@ -13,6 +13,7 @@
 
 <properties>
 	<reflection.vers>0.9.10</reflection.vers>
+   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
 
 <dependencyManagement>

@@ -14,7 +14,7 @@ public class AjouterClientAction extends Action {
 
 	public void execute() throws IOException {
 
-		// récuperation de la saisie
+		// recuperation de la saisie
 
 		System.out.println("Vous voulez ajoutez un client");
 		System.out.println("Veuillez saisir le nom du client");

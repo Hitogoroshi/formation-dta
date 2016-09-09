@@ -12,7 +12,7 @@ public class StockagePizzaTableau implements Stockage<Pizza> {
 	public Map<String, Pizza> pizzas = new TreeMap<>();
 
 	public StockagePizzaTableau() {
-		this.pizzas.put("PEP", new Pizza("PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
+		this.pizzas.put("PEP", new Pizza("PEP", "PÃ©pÃ©roni", 12.50, CategoriePizza.VIANDE));
 		this.pizzas.put("MAR", new Pizza("MAR", "Margherita", 14.00, CategoriePizza.SANS_VIANDE));
 		this.pizzas.put("REI", new Pizza("REI", "La Reine", 11.50, CategoriePizza.VIANDE));
 		this.pizzas.put("FRO", new Pizza("FRO", "La 4 fromages", 12.00, CategoriePizza.SANS_VIANDE));

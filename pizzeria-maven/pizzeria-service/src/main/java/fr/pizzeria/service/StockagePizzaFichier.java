@@ -1,7 +1,6 @@
 package fr.pizzeria.service;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
@@ -23,13 +22,13 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 
 		// try avec un arguement il vas fermer le fichier a la fin list.close();
 		try (Stream<Path> list = Files.list(Paths.get("data", "Pizza"))) {
-			// parcourir le répertoire data/pizza
+			// parcourir le rï¿½pertoire data/pizza
 
 			return list.map(cheminFichier -> {
 
 				Pizza p = new Pizza();
 				try {
-					Optional<String> opt = Files.lines(cheminFichier, Charset.forName("Cp1252")).findFirst();
+					Optional<String> opt = Files.lines(cheminFichier).findFirst();
 					String line = opt.get();
 
 					// tab[0], tab[1]
@@ -50,11 +49,11 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 			// Files.lines(cheminFichier).forEach(System.out::println);
 
 		} catch (NoSuchFileException e) {
-			// Cette exception est levée si l'objet FileInputStream ne trouve
+			// Cette exception est levï¿½e si l'objet FileInputStream ne trouve
 			// aucun fichier
 			System.out.println("Fichier non trouver");
 		} catch (IOException e) {
-			// Celle-ci se produit lors d'une erreur d'écriture ou de lecture
+			// Celle-ci se produit lors d'une erreur d'ï¿½criture ou de lecture
 			throw new ServiceException(e);
 
 		}
@@ -65,13 +64,13 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 	@Override
 	public void save(Pizza newPizza) {
 
-		// Création chemin d'un fichier data/pizza/test.txt
+		// Crï¿½ation chemin d'un fichier data/pizza/test.txt
 		Path cheminFichier = Paths.get("data", "Pizza", newPizza.getCode() + ".txt");
 
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
 		try {
 
-			// Création d'un nouveau fichier
+			// Crï¿½ation d'un nouveau fichier
 			Files.createFile(cheminFichier);
 			Files.write(cheminFichier,
 					Arrays.asList(newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategorie().name()));
@@ -84,7 +83,7 @@ public class StockagePizzaFichier implements Stockage<Pizza> {
 	@Override
 	public void update(Pizza editPizza, String code) {
 		// Modifier un fichier pizza
-		// Création chemin d'un fichier data/pizza/test.txt
+		// Crï¿½ation chemin d'un fichier data/pizza/test.txt
 		Path ancienFichier = Paths.get("data", "pizza", code + ".txt");
 		Path nouveauFichier = Paths.get("data", "pizza", editPizza.getCode() + ".txt");
 

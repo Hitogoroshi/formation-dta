@@ -2,7 +2,7 @@ package fr.pizzeria.exception;
 
 public class DebitException extends RuntimeException {
 
-	private static final String MSG = "Montant inférieur a 0 euro pour ce débit vous ne pouvez pas débiter ce compte ou choisiez un nouveau montant !\n";
+	private static final String MSG = "Montant infÃ©rieur a 0 euro pour ce dÃ©bit vous ne pouvez pas dÃ©biter ce compte ou choisiez un nouveau montant !\n";
 
 	public DebitException() {
 		super(MSG);

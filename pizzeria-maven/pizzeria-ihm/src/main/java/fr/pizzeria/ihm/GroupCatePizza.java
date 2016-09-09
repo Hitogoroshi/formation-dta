@@ -14,7 +14,7 @@ public class GroupCatePizza extends Action {
 
 	@Override
 	public void execute() throws IOException {
-		System.out.println("**** Liste de Pizzas Classé ****");
+		System.out.println("**** Liste de Pizzas ClassÃ© ****");
 		helper.getStockagePizza().findAll().stream().collect(Collectors.groupingBy(Pizza::getCategorie))
 				.forEach((cle, valeur) -> {
 					System.out.println(cle);
