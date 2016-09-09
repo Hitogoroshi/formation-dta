@@ -34,7 +34,7 @@ public class StockagePizzaJpa implements Stockage<Pizza> {
 	public void save(Pizza newPizza) {
 
 		executeUneTransaction(em -> {
-			newPizza.setUrl_image(newPizza.getNom() + ".jpg");
+			newPizza.setUrlImage(newPizza.getNom() + ".jpg");
 			em.persist(newPizza);
 		});
 

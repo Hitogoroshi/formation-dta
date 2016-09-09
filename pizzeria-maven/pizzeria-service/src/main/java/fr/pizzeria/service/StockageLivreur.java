@@ -11,8 +11,8 @@ public class StockageLivreur implements Stockage<Livreur> {
 	public Map<Integer, Livreur> livreurs = new TreeMap<>();
 
 	public StockageLivreur() {
-		this.livreurs.put(1, new Livreur(1, "Dupuit", "Gaelle", 26.50));
-		this.livreurs.put(2, new Livreur(2, "Lacroix", "Judith", 12.00));
+		this.livreurs.put(1, new Livreur(1, "Dupuit", "Gaelle", 26.50, "login", "motdepasse", 50));
+		this.livreurs.put(2, new Livreur(2, "Lacroix", "Judith", 12.00, "login", "motdepasse", 50));
 	}
 
 	public Collection<Livreur> findAll() {

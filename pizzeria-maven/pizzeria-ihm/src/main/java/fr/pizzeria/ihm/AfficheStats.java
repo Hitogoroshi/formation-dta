@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import fr.pizzeria.exception.ServiceNonImplementeException;
 import fr.pizzeria.model.CompteStat;
 
 @AnnotationAction
@@ -18,10 +19,12 @@ public class AfficheStats extends Action {
 
 	@Override
 	public void execute() throws IOException {
+
 		List<CompteStat> stats = new ArrayList<>();
-		stats.addAll(helper.getStockageLivreur().findAll());
-		stats.addAll(helper.getStockageClient().findAll());
 		try {
+			stats.addAll(helper.getStockageLivreur().findAll());
+			stats.addAll(helper.getStockageClient().findAll());
+
 			Long nbCompte = stats.stream().collect(Collectors.counting());
 			double moyenne = stats.stream().collect(Collectors.averagingDouble(CompteStat::getSolde));
 			double totSolde = stats.stream().collect(Collectors.counting());
@@ -35,6 +38,8 @@ public class AfficheStats extends Action {
 					+ maxSolde);
 		} catch (NoSuchElementException e) {
 			System.out.println("Rien dans la liste");
+		} catch (ServiceNonImplementeException e) {
+			System.out.println("Service non implemente");
 		}
 	}
 

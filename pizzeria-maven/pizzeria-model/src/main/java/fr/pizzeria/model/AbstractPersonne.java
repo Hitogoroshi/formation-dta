@@ -1,11 +1,24 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AbstractPersonne implements CompteStat {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
 	private String prenom;
 	protected double solde;
+	protected String login;
+	protected String motDePasse;
 
 	public void crediterCompte(double montant) {
 
@@ -56,11 +69,29 @@ public abstract class AbstractPersonne implements CompteStat {
 		this.solde = solde;
 	}
 
-	public AbstractPersonne(int id, String nom, String prenom, double solde) {
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getmotDePasse() {
+		return motDePasse;
+	}
+
+	public void setMot_de_passe(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+
+	public AbstractPersonne(int id, String nom, String prenom, double solde, String login, String motDePasse) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.solde = solde;
+		this.login = login;
+		this.motDePasse = motDePasse;
 	}
 }

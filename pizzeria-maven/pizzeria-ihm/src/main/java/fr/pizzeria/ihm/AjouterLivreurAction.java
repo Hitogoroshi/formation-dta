@@ -2,16 +2,16 @@ package fr.pizzeria.ihm;
 
 import java.io.IOException;
 
-import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Livreur;
 
-@AnnotationAction
-public class AjouterClientAction extends Action {
+public class AjouterLivreurAction extends Action {
 
-	public AjouterClientAction(IhmHelper helper) {
-		// TODO Auto-generated constructor stub
-		super("Ajouter un client", helper);
+	public AjouterLivreurAction(IhmHelper helper) {
+		super("Ajouter un nouveau livreur", helper);
+
 	}
 
+	@Override
 	public void execute() throws IOException {
 
 		// recuperation de la saisie
@@ -27,11 +27,13 @@ public class AjouterClientAction extends Action {
 		String login = helper.getScanner().next();
 		System.out.println("Veuillez saisir le mot de passe");
 		String motDePasse = helper.getScanner().next();
-		// creation du nouveau Client
-		Client nouveauClient = new Client(id, nom, prenom, solde, login, motDePasse);
-		helper.getStockageClient().save(nouveauClient);
+		System.out.println("Veuillez saisir le montant du decouvert autoriser");
+		double MontantDecouvertAutoriser = helper.getScanner().nextDouble();
+		// creation du nouveau Livreur
+		Livreur nouveauLivreur = new Livreur(id, nom, prenom, solde, login, motDePasse, MontantDecouvertAutoriser);
+		helper.getStockageLivreur().save(nouveauLivreur);
 
-		System.out.println("Client ajouter avec succes" + "\n");
+		System.out.println("Livreur ajouter avec succes" + "\n");
 	}
 
 }

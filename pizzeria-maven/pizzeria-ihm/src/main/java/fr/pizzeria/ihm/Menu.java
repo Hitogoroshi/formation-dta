@@ -26,7 +26,7 @@ public class Menu {
 		this.actions.put(5, new ModifierPizzaAction(helper));
 		this.actions.put(6, new SupprimerPizzaAction(helper));
 		this.actions.put(7, new ListerClient(helper));
-		this.actions.put(8, new AjouterClientAction(helper));
+		this.actions.put(8, new AjouterLivreurAction(helper));
 		this.actions.put(9, new ListerLivreur(helper));
 		this.actions.put(10, new CrediterClientAction(helper));
 		this.actions.put(11, new DebiterClientAction(helper));

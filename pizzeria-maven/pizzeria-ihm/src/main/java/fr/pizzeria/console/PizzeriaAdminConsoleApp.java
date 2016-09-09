@@ -14,8 +14,6 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
-import fr.pizzeria.service.StockageClient;
-import fr.pizzeria.service.StockageLivreur;
 
 public class PizzeriaAdminConsoleApp {
 
@@ -28,15 +26,21 @@ public class PizzeriaAdminConsoleApp {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String classeStockagePizza = bundle.getString("stockage.pizza");
-		System.out.println(classeStockagePizza);
 		Class<?> classePizza = Class.forName(classeStockagePizza);
 
-		@SuppressWarnings("unchecked")
-		// On ne peut pas faire autrement ;)
-		Stockage<Pizza> stockagePizza = (Stockage<Pizza>) classePizza.newInstance();
+		String classeStockageClient = bundle.getString("stockage.client");
+		Class<?> classeClient = Class.forName(classeStockageClient);
 
-		Stockage<Client> stockageClient = new StockageClient();
-		Stockage<Livreur> stockageLivreur = new StockageLivreur();
+		String classeStockageLivreur = bundle.getString("stockage.livreur");
+		Class<?> classLivreur = Class.forName(classeStockageLivreur);
+
+		// On ne peut pas faire autrement pour les supp waring
+		@SuppressWarnings("unchecked")
+		Stockage<Pizza> stockagePizza = (Stockage<Pizza>) classePizza.newInstance();
+		@SuppressWarnings("unchecked")
+		Stockage<Client> stockageClient = (Stockage<Client>) classeClient.newInstance();
+		@SuppressWarnings("unchecked")
+		Stockage<Livreur> stockageLivreur = (Stockage<Livreur>) classLivreur.newInstance();
 
 		IhmHelper helper = new IhmHelper(stockagePizza, stockageClient, stockageLivreur, scanner);
 

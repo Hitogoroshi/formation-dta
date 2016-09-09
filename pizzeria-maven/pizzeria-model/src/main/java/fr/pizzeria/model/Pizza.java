@@ -1,6 +1,5 @@
 package fr.pizzeria.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,14 +17,12 @@ public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "reference")
 	private String code;
-	@Column(name = "libelle")
 	private String nom;
 	private double prix;
 	@Enumerated(EnumType.STRING)
 	private CategoriePizza categorie;
-	private String url_image;
+	private String urlImage;
 
 	public Integer getId() {
 		return id;
@@ -67,12 +64,12 @@ public class Pizza {
 		this.categorie = categorie;
 	}
 
-	public String getUrl_image() {
-		return url_image;
+	public String getUrlImage() {
+		return urlImage;
 	}
 
-	public void setUrl_image(String url_image) {
-		this.url_image = url_image;
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
 	}
 
 	public Pizza(String code, String nom, double prix, CategoriePizza categorie) {
@@ -84,7 +81,7 @@ public class Pizza {
 	}
 
 	public Pizza() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 }
