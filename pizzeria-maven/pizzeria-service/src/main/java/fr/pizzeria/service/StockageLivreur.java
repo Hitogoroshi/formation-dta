@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 import fr.pizzeria.model.Livreur;
 
-public class StockageLivreur implements Stockage<Livreur> {
+public class StockageLivreur implements Stockage<Livreur, Integer> {
 
 	public Map<Integer, Livreur> livreurs = new TreeMap<>();
 
@@ -24,11 +24,15 @@ public class StockageLivreur implements Stockage<Livreur> {
 		this.livreurs.put(newLivreur.getId(), newLivreur);
 	}
 
-	public void update(Livreur editPizza, String code) {
+	@Override
+	public void update(Livreur editPizza, Integer code) {
+		// TODO Auto-generated method stub
 
 	}
 
-	public void delete(String ancienCode) {
+	@Override
+	public void delete(Integer ancienCode) {
+		// TODO Auto-generated method stub
 
 	}
 

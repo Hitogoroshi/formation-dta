@@ -13,12 +13,12 @@ import javax.persistence.TypedQuery;
 
 import fr.pizzeria.model.Pizza;
 
-public class StockagePizzaJpa implements Stockage<Pizza> {
+public class StockagePizzaJpa implements Stockage<Pizza, String> {
 
 	private EntityManagerFactory emf;
 
 	public StockagePizzaJpa() {
-		this.emf = Persistence.createEntityManagerFactory("pizzeria-ihm");
+		this.emf = Persistence.createEntityManagerFactory("pizzeria-unit");
 	}
 
 	@Override

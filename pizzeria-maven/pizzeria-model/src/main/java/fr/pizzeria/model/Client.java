@@ -3,12 +3,16 @@ package fr.pizzeria.model;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "client.findAllClient", query = "SELECT c FROM Client c ORDER BY nom"),
+		@NamedQuery(name = "client.findById", query = "SELECT c FROM Pizza c WHERE  c.id =:id") })
 public class Client extends AbstractPersonne {
 
 	public static final String PREFIX_ID = "C";

@@ -13,13 +13,13 @@ import fr.pizzeria.service.Stockage;
 
 public class IhmHelper {
 
-	private Stockage<Pizza> stockagePizza;
-	private Stockage<Client> stockageClient;
-	private Stockage<Livreur> stockageLivreur;
+	private Stockage<Pizza, String> stockagePizza;
+	private Stockage<Client, Integer> stockageClient;
+	private Stockage<Livreur, Integer> stockageLivreur;
 	private Scanner scanner;
 
-	public IhmHelper(Stockage<Pizza> stockage, Stockage<Client> stockageC, Stockage<Livreur> stockageL,
-			Scanner scanner) {
+	public IhmHelper(Stockage<Pizza, String> stockage, Stockage<Client, Integer> stockageC,
+			Stockage<Livreur, Integer> stockageL, Scanner scanner) {
 		super();
 		this.stockagePizza = stockage;
 		this.scanner = scanner;
@@ -57,7 +57,7 @@ public class IhmHelper {
 	}
 
 	private Optional<? extends AbstractPersonne> find(String idRecherche, String prefixId,
-			Stockage<? extends AbstractPersonne> stockage) throws IOException {
+			Stockage<? extends AbstractPersonne, ?> stockage) throws IOException {
 
 		return stockage.findAll().stream().filter(t -> t.getId() == Integer.valueOf(idRecherche.replace(prefixId, "")))
 				.findFirst();
@@ -68,7 +68,7 @@ public class IhmHelper {
 		 */
 	}
 
-	public Stockage<Pizza> getStockagePizza() {
+	public Stockage<Pizza, String> getStockagePizza() {
 		return stockagePizza;
 	}
 
@@ -76,12 +76,12 @@ public class IhmHelper {
 		return scanner;
 	}
 
-	public Stockage<Client> getStockageClient() {
+	public Stockage<Client, Integer> getStockageClient() {
 		// TODO Auto-generated method stub
 		return stockageClient;
 	}
 
-	public Stockage<Livreur> getStockageLivreur() {
+	public Stockage<Livreur, Integer> getStockageLivreur() {
 		// TODO Auto-generated method stub
 		return stockageLivreur;
 	}

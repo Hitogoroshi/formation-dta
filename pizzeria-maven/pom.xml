@@ -9,6 +9,7 @@
 <module>pizzeria-ihm</module>
 <module>pizzeria-model</module>
 <module>pizzeria-service</module>
+<module>pizzeria-client</module>
 </modules>
 
 <properties>

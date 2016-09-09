@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class StockagePizzaTableau implements Stockage<Pizza> {
+public class StockagePizzaTableau implements Stockage<Pizza, String> {
 
 	public Map<String, Pizza> pizzas = new TreeMap<>();
 

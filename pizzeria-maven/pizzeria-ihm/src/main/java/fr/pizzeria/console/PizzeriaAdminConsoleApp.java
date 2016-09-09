@@ -36,11 +36,11 @@ public class PizzeriaAdminConsoleApp {
 
 		// On ne peut pas faire autrement pour les supp waring
 		@SuppressWarnings("unchecked")
-		Stockage<Pizza> stockagePizza = (Stockage<Pizza>) classePizza.newInstance();
+		Stockage<Pizza, String> stockagePizza = (Stockage<Pizza, String>) classePizza.newInstance();
 		@SuppressWarnings("unchecked")
-		Stockage<Client> stockageClient = (Stockage<Client>) classeClient.newInstance();
+		Stockage<Client, Integer> stockageClient = (Stockage<Client, Integer>) classeClient.newInstance();
 		@SuppressWarnings("unchecked")
-		Stockage<Livreur> stockageLivreur = (Stockage<Livreur>) classLivreur.newInstance();
+		Stockage<Livreur, Integer> stockageLivreur = (Stockage<Livreur, Integer>) classLivreur.newInstance();
 
 		IhmHelper helper = new IhmHelper(stockagePizza, stockageClient, stockageLivreur, scanner);
 

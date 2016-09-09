@@ -13,7 +13,7 @@ import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class StockagePizzaBdD implements Stockage<Pizza> {
+public class StockagePizzaBdD implements Stockage<Pizza, String> {
 
 	@Override
 	public Collection<Pizza> findAll() {

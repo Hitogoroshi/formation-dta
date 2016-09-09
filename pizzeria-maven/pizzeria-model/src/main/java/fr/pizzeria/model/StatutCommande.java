@@ -2,7 +2,7 @@ package fr.pizzeria.model;
 
 public enum StatutCommande {
 
-	EN_COURS("en cours de preparation"), EN_LIVRAISON("en livraison"), LIVRE("livré");
+	NON("Non traitée"), EN_COURS("en cours de preparation"), EN_LIVRAISON("en livraison"), LIVRE("livré");
 
 	private String nom = "";
 
