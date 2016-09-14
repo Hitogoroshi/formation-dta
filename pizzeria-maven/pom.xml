@@ -10,6 +10,7 @@
 <module>pizzeria-model</module>
 <module>pizzeria-service</module>
 <module>pizzeria-client</module>
+<module>pizzeria-admin-web</module>
 </modules>
 
 <properties>
@@ -72,6 +73,11 @@
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-entitymanager</artifactId>
 	    <version>5.1.0.Final</version>
+	</dependency>
+	<dependency>
+	   <groupId>javax.servlet</groupId>
+	   <artifactId>javax.servlet-api</artifactId>
+	   <version>3.1.0</version>
 	</dependency>
 </dependencies>
 </dependencyManagement>

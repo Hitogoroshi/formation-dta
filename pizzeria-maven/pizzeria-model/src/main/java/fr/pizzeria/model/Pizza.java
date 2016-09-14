@@ -84,4 +84,9 @@ public class Pizza {
 
 	}
 
+	public String toString() {
+		return code + " " + nom + " " + prix + " " + categorie + " " + urlImage + "\n";
+
+	}
+
 }

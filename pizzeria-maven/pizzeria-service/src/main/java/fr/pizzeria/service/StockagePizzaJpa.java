@@ -3,6 +3,8 @@ package fr.pizzeria.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +13,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.Pizza;
 
 public class StockagePizzaJpa implements Stockage<Pizza, String> {
@@ -71,7 +74,10 @@ public class StockagePizzaJpa implements Stockage<Pizza, String> {
 			objetExecutable.accept(em);
 			et.commit();
 		} catch (PersistenceException e) {
+			Logger.getGlobal().log(Level.SEVERE, "Problème base de données", e);
 			et.rollback();
+			em.close();
+			throw new ServiceException(e);
 		}
 		em.close();
 	}
