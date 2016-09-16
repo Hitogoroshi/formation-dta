@@ -6,7 +6,7 @@
     <version>1.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>pizzeria-ihm</artifactId>
+  <artifactId>pizzeria-client</artifactId>
   <build>
     <plugins>
       <plugin>
@@ -14,7 +14,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+              <mainClass>fr.pizzeria.console.PizzeriaClientConsoleApp</mainClass>
             </manifest>
           </archive>
         </configuration>

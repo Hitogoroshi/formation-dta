@@ -1,0 +1,136 @@
+
+#atouts  {
+    text-align: center;
+}
+#atouts h2  {
+    position: relative;
+    margin: 50px 0 0 20px;
+    color: coral;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    z-index: 2;
+}
+#atouts p  {    
+    margin: 20px;
+    font-size: 16px;
+    position: relative;
+    color:ghostwhite;
+    z-index: 2;
+}
+
+        body {
+            background-color: #241906;
+            background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+        }
+
+        h1{
+            color: ghostwhite;
+        }
+        
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 100%;
+            height: auto;
+            left: 50%;
+            margin: auto;
+        }
+        
+        .carousel-caption {
+            font-size: 32px;
+        }
+        
+        .jumbotron {
+            background-color: coral;
+            color: white;
+        }
+        
+        .btn-primary {
+            background-color: goldenrod;
+            border: darkgoldenrod;
+        }
+        
+        .btn-primary:hover {
+            background-color: burlywood;
+        }
+
+        .container{
+            margin: auto;
+            background-color: coral;
+            -moz-border-radius:10px;
+			-webkit-border-radius:10px;
+			border-radius:10px;
+        }
+        
+        .form-horizontal{
+        	color: ghostwhite;
+        }
+        
+        #formulaire{
+            margin: auto;
+            background-color: coral;
+            -moz-border-radius:10px;
+			-webkit-border-radius:10px;
+			border-radius:10px;
+        }
+        
+        .btn-info {
+            background-color: goldenrod;
+            border: darkgoldenrod;
+        }
+        .btn-info:hover {
+            background-color: burlywood;
+        }
+        
+        .glyphicon-plus{
+        	color: lightseagreen;
+        }
+        .glyphicon-plus:hover{
+        	color: lightgreen;
+        }
+        
+        .glyphicon-remove{
+        	color: orangered;
+        }
+        .glyphicon-remove:hover{
+        	color: darkgoldenrod;
+        }
+
+        .pizzas {
+            display: flex;
+        }
+
+        .thumbnail{
+            width: 100%;
+            vertical-align: middle;
+            padding: 20px;
+        }
+
+        .thumbnail img{
+            height: 200px;
+        }
+        
+        .thumbnail > p {
+            color: cadetblue;
+            width: 100%;
+            /* à compléter pour gérer l'ellipse du texte */
+        }
+        
+        #atouts{
+            color: ghostwhite;
+        }
+        
+        .tooltip-head {
+            color: #fff;
+            background-color: lightcoral;
+            padding: 5px 30px 5px 30px;
+            border-radius: 4px 4px 0 0;
+            text-align: center;
+            margin-bottom: -2px;
+        }
+        
+        .tooltip-head h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+

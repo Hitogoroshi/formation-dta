@@ -9,10 +9,42 @@
   	<servlet-name>MaServlet</servlet-name>
   	<servlet-class>dta.MaServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ListerPizzaController</servlet-name>
+  	<servlet-class>dta.ListerPizzaController</servlet-class>
+  </servlet>
+   <servlet>
+  	<servlet-name>DeletePizzaController</servlet-name>
+  	<servlet-class>dta.DeletePizzaController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NouvellePizzaController</servlet-name>
+  	<servlet-class>dta.NouvellePizzaController</servlet-class>
+  </servlet>
+   <servlet>
+  	<servlet-name>EditPizzaController</servlet-name>
+  	<servlet-class>dta.EditPizzaController</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>MaServlet</servlet-name>
   	<url-pattern>/maservlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ListerPizzaController</servlet-name>
+  	<url-pattern>/listPizza</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeletePizzaController</servlet-name>
+  	<url-pattern>/deletePizza</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NouvellePizzaController</servlet-name>
+  	<url-pattern>/newpizza</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EditPizzaController</servlet-name>
+  	<url-pattern>/editPizza</url-pattern>
   </servlet-mapping>
   
 </web-app>

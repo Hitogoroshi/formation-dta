@@ -27,6 +27,7 @@ public class MaServlet extends HttpServlet {
 		listpizza.forEach(p -> {
 			try {
 				resp.getWriter().write(p.toString());
+
 			} catch (IOException e) {
 				e.printStackTrace();
 				Logger.getGlobal().log(Level.SEVERE, "erreur lors de la récupération des pizzas", e);
