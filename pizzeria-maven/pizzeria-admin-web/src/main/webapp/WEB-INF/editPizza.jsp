@@ -1,19 +1,17 @@
-<%@page import="java.util.Collection"%>
-<%@page import="fr.pizzeria.model.Pizza"%>
-    <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false" %>
         <html>
 
         <head>
             <meta charset="utf-8">
-            <title>Ajouter Pizza - La Florentina - Pizzï¿½ria ï¿½ Saint-Herblain</title>
+            <title>Liste Pizza - La Florentina - Pizzéria à Saint-Herblain</title>
             <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
             <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             
             <!-- Bootstrap core CSS -->
-	        <link href="<%= request.getContextPath() %>/dist/css/bootstrap.min.css" rel="stylesheet">
+	        <link href="<c:url value='/dist/css/bootstrap.min.css'/>" rel="stylesheet">
 	
 	        <!-- Custom styles for this template -->
 	        <link href="style.css" rel="stylesheet">
@@ -65,7 +63,7 @@
                         <!-- Flï¿½ches de contrï¿½le -->
                         <a class="left carousel-control" href="#monCarousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Prï¿½cï¿½dent</span>
+                            <span class="sr-only">Précédent</span>
                         </a>
                         <a class="right carousel-control" href="#monCarousel" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -90,16 +88,16 @@
                             <!-- Barre de navigation pour ordinateurs -->
                             <div class="collapse navbar-collapse" id="maNavBar">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="Accueil.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
+                                    <li><a href="Accueil.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
                                     <li><a href="#"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> La Florentina</a></li>
-                                    <li class="dropdown">
+                                    <li class="dropdown" class="active">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Notre carte<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Tï¿½lï¿½charger la carte</a></li>
+                                                <li><a href="listPizza"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Télécharger la carte</a></li>
                                             </li>
                                             <li>
-                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Voir la carte</a></li>
+                                                <li><a href="listPizza"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Voir la carte</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Nos pizzas</li>
@@ -112,21 +110,21 @@
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Nos Salades</li>
-                                            <li><a href="#">Salade Cï¿½sar</a></li>
+                                            <li><a href="#">Salade César</a></li>
                                             <li><a href="#">Salade Feta</a></li>
                                             <li>
                                                 <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des salades</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
-                                            <li class="dropdown-header"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Nos Pï¿½tes</li>
-                                            <li><a href="#">pï¿½tes carbonara</a></li>
-                                            <li><a href="#">pï¿½tes bolognese</a></li>
+                                            <li class="dropdown-header"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Nos Pâtes</li>
+                                            <li><a href="#">pâtes carbonara</a></li>
+                                            <li><a href="#">pâtes bolognese</a></li>
                                             <li>
-                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des pï¿½tes</a></li>
+                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des pâtes</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Nos Viandes</li>
-                                            <li><a href="#">Tartare de boeuf coupï¿½ au couteau</a></li>
+                                            <li><a href="#">Tartare de boeuf coupé au couteau</a></li>
                                             <li><a href="#">Carpaccio de boeuf<span class="label label-danger">En rupture</span></a></li>
                                             <li>
                                                 <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des viandes</a></li>
@@ -134,6 +132,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="javascript:chargeHTML('ContactezNous')"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Contactez-nous</a></li>
+                                	<li><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -145,20 +144,21 @@
 				<br/><br/>
 				
 				
+				<div class="container">
+					<h1>Formulaire de modification d'un pizza</h1>
+				
 				<form id ="formulaire" class="form-horizontal" method="post">
 					<fieldset>
 					
 						<!-- Form Name -->
 						<legend>Modifier une pizza</legend>
 						
-						<% String anciencode = request.getParameter("code");
-						Pizza pizza = (Pizza)request.getAttribute("pizza");%>
 						
 						<!-- Text input-->
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="textinput">Ancien Code Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="anciencode" type="text" placeholder="" value="<%=anciencode %>" class="form-control input-md" required="">
+						  <input id="textinput" name="anciencode" type="text" placeholder="" value="${param.code}" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
@@ -167,7 +167,7 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="textinput">Code Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="code" type="text" placeholder="" value="<%=pizza.getCode() %>" class="form-control input-md" required="">
+						  <input id="textinput" name="code" type="text" placeholder="" value="${pizza.code}" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
@@ -176,7 +176,7 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="textinput">Nom Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="nom" type="text" placeholder="" value="<%=pizza.getNom() %>" class="form-control input-md" required="">
+						  <input id="textinput" name="nom" type="text" placeholder="" value="${pizza.nom}" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
@@ -185,7 +185,7 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="textinput">Prix Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="prix" type="text" placeholder="" value="<%=pizza.getPrix() %>" class="form-control input-md" required="">
+						  <input id="textinput" name="prix" type="text" placeholder="" value="${pizza.prix}" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
@@ -195,7 +195,7 @@
 						  <label class="col-md-4 control-label" for="categorie">Catégorie</label>
 						  <div class="col-md-4">
 						    <select id="categorie" name="categorie" class="form-control">
-						    	<option value="<%=pizza.getCode() %>"></option>
+						    	<option value=" "></option>
 						      <option value="VIANDE">Viande</option>
 						      <option value="SANS_VIANDE">Sans viande</option>
 						      <option value="POISSON">Poisson</option>
@@ -209,6 +209,7 @@
 					
 					</fieldset>
 				</form>
+			</div>
 
                 <br/><br/><br/>
 

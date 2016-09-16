@@ -89,9 +89,9 @@
                             <!-- Barre de navigation pour ordinateurs -->
                             <div class="collapse navbar-collapse" id="maNavBar">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="Accueil.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
+                                    <li class="active"><a href="Accueil.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
                                     <li><a href="#"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> La Florentina</a></li>
-                                    <li class="dropdown" class="active">
+                                    <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Notre carte<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
@@ -107,7 +107,7 @@
                                             <li><a href="#">4 Fromages</a></li>
                                             <li><a href="#">Chorizo</a></li>
                                             <li>
-                                                <li><a href="listPizza"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des pizzas</a></li>
+                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des pizzas</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Nos Salades</li>
@@ -133,7 +133,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="javascript:chargeHTML('ContactezNous')"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Contactez-nous</a></li>
-                                	<li><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
+                                	<li class="active"><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -146,59 +146,42 @@
 				
 				
 				<div class="container">
-					<h1>Formulaire d'ajout d'une pizza</h1>
+					<h1>Formulaire de connection</h1>
 				
-				<form id ="formulaire" class="form-horizontal" method="post">
-					<fieldset>
-					
+					<form class="form-horizontal" method="post">
+						<fieldset>
+						
 						<!-- Form Name -->
-						<legend>Ajouter une pizza</legend>
+						<legend>Se connecter</legend>
 						
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Code Pizza</label>  
+						  <label class="col-md-4 control-label" for="textinput">Login</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="code" type="text" placeholder="code en trois lettre" class="form-control input-md" required="">
+						  <input id="textinput" name="login" type="text" placeholder="email" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
 						
-						<!-- Text input-->
+						<!-- Password input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Nom Pizza</label>  
+						  <label class="col-md-4 control-label" for="passwordinput">Mot de passe</label>
 						  <div class="col-md-4">
-						  <input id="textinput" name="nom" type="text" placeholder="nom" class="form-control input-md" required="">
+						    <input id="passwordinput" name="motDePasse" type="password" placeholder="Password" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
 						
-						<!-- Text input-->
+						<!-- Button -->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Prix Pizza</label>  
+						  <label class="col-md-4 control-label" for="singlebutton"></label>
 						  <div class="col-md-4">
-						  <input id="textinput" name="prix" type="text" placeholder="prix" class="form-control input-md" required="">
-						    
+						    <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-info">Valider</button>
 						  </div>
 						</div>
 						
-						<!-- Select Basic -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="categorie">Catégorie</label>
-						  <div class="col-md-4">
-						    <select id="categorie" name="categorie" class="form-control">
-						      <option value="VIANDE">Viande</option>
-						      <option value="SANS_VIANDE">Sans viande</option>
-						      <option value="POISSON">Poisson</option>
-						    </select>
-						  </div>
-						</div>
-						
-						<div class="col-md-4">
-					   	 <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-info">Ajouter</button>
-					  	</div>
-					
-					</fieldset>
-				</form>
+						</fieldset>
+					</form>
 				</div>
 
                 <br/><br/><br/>

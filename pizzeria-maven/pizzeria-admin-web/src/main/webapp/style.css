@@ -53,6 +53,12 @@
         .btn-primary:hover {
             background-color: burlywood;
         }
+        
+        #singlebutton{
+        	display: block;
+        	margin: 25px;
+        	text-align: center;
+        }
 
         .container{
             margin: auto;

@@ -1,19 +1,18 @@
-<%@page import="java.util.Collection"%>
-<%@page import="fr.pizzeria.model.Pizza"%>
-    <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false" %>
+
         <html>
 
         <head>
             <meta charset="utf-8">
             <title>Liste Pizza - La Florentina - Pizzï¿½ria ï¿½ Saint-Herblain</title>
             <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
             <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             
             <!-- Bootstrap core CSS -->
-	        <link href="<%= request.getContextPath() %>/dist/css/bootstrap.min.css" rel="stylesheet">
+	        <link href="<c:url value='/dist/css/bootstrap.min.css'/>" rel="stylesheet">
 	
 	        <!-- Custom styles for this template -->
 	        <link href="style.css" rel="stylesheet">
@@ -90,16 +89,16 @@
                             <!-- Barre de navigation pour ordinateurs -->
                             <div class="collapse navbar-collapse" id="maNavBar">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="Accueil.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
+                                    <li><a href="Accueil.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
                                     <li><a href="#"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> La Florentina</a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Notre carte<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Tï¿½lï¿½charger la carte</a></li>
+                                                <li><a href="listPizza"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Tï¿½lï¿½charger la carte</a></li>
                                             </li>
                                             <li>
-                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Voir la carte</a></li>
+                                                <li><a href="listPizza"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Voir la carte</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Nos pizzas</li>
@@ -134,6 +133,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="javascript:chargeHTML('ContactezNous')"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Contactez-nous</a></li>
+                                    <li><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -161,13 +161,14 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="singlebutton"></label>
 					  <div class="col-md-4">
-					    <button id="singlebutton" name="singlebutton" class="btn btn-info">Lancez la recherche</button>
+					    <button id="single" name="singlebutton" onclick="surligneText2()" class="btn btn-info">Lancez la recherche</button>
 					  </div>
 					</div>
 					
 					</fieldset>
 				</form>
                 <br/><br/>
+
 
                 <div class="container">
                     <h1>Liste des pizzas disponible</h1>
@@ -179,28 +180,32 @@
   								 <th>Code</th>
   								 <th>Nom</th>
   								 <th>Prix</th>
-  								 <th>Catégorie</th>
+  								 <th>Catï¿½gorie</th>
   								 <th>Editer</th>
   								 <th>Supprimer</th>
   							</tr>
   						</thead>
   						<tbody>
-	                        <% 
-	                    	Collection<Pizza> list = (Collection<Pizza>) request.getAttribute("list_pizza"); 
-	                    
-		                    for (Pizza pizzas: list){ %>
+							  <c:forEach var="pizza" items="${list_pizza}">
 									<tr>
-		                            <th><%= pizzas.getCode() %></th>
-		                            <th><%= pizzas.getNom() %></th>
-		                            <th><%= pizzas.getPrix() %></th>
-		                            <th><%= pizzas.getCategorie() %></th>
-		                            <th><a class ="btn" href="<%=request.getContextPath()%>/editPizza?code=<%= pizzas.getCode() %>"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></th>
-		                            <th><a class ="btn" href="<%=request.getContextPath()%>/deletePizza?code=<%= pizzas.getCode() %>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></th>
+		                            <th> ${pizza.code}</th>
+		                            <th id="surligne" style=""> ${pizza.nom}</th>
+		                            <th> ${pizza.prix}</th>
+		                            <th> ${pizza.categorie}</th>
+		                            <th><a class ="btn" href="<c:url value='/editPizza?code=${pizza.code}' />"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></th>
+		                            <th><a class ="btn" href="<c:url value='/deletePizza?code=${pizza.code}' />"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></th>
 									</tr>
-		                    <%}
-		                    %>
+								</c:forEach>
 	                    </tbody>
                     </table>
+                    
+                    <!-- Button -->
+					<div class="form-group">
+					  <label class="col-md-4 control-label" for="singlebutton"></label>
+					  <div class="col-md-4">
+					    <button id="singlebutton" name="singlebutton" class="btn btn-info" onclick="document.location.href='newpizza'">Ajouter une pizza</button>
+					  </div>
+					</div>
                 </div>
                 <br/><br/>
 
@@ -214,6 +219,19 @@
 						@Taki
                     </div>
                 </footer>
+
+
+			<script type="text/javascript">
+			function surligneText2(){
+			    var userInput = document.getElementById('searchinput').value;
+			    if(userInput.eval(document.getElementById('surligne').innerHTML.value)){
+			    	document.getElementById('surligne').style.display= "background-color: gold;";
+			    	
+			    }
+			    
+			}
+			</script>
+			
 
         </body>
 
