@@ -134,6 +134,7 @@
                                     </li>
                                     <li><a href="javascript:chargeHTML('ContactezNous')"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Contactez-nous</a></li>
                                 	<li><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
+                                	<li><a href="deconnection"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se deconnecter</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->

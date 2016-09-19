@@ -133,6 +133,7 @@
                                     </li>
                                     <li><a href="javascript:chargeHTML('ContactezNous')"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Contactez-nous</a></li>
                                 	<li><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
+                                	<li><a href="deconnection"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se deconnecter</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -158,16 +159,16 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="textinput">Ancien Code Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="anciencode" type="text" placeholder="" value="${param.code}" class="form-control input-md" required="">
+						  <input id="textinput" name="code" type="text" disabled placeholder="" value="${param.code}" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>
 						
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Code Pizza</label>  
+						  <label class="col-md-4 control-label" for="textinput">Nouveau Code Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="code" type="text" placeholder="" value="${pizza.code}" class="form-control input-md" required="">
+						  <input id="textinput" name="newcode" type="text" placeholder="" value="${pizza.code}" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>

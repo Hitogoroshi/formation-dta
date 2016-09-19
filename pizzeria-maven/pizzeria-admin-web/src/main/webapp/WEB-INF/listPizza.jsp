@@ -5,7 +5,7 @@
 
         <head>
             <meta charset="utf-8">
-            <title>Liste Pizza - La Florentina - Pizzï¿½ria ï¿½ Saint-Herblain</title>
+            <title>Liste Pizza - La Florentina - Pizzéria à Saint-Herblain</title>
             <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
             <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -64,7 +64,7 @@
                         <!-- Flï¿½ches de contrï¿½le -->
                         <a class="left carousel-control" href="#monCarousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Prï¿½cï¿½dent</span>
+                            <span class="sr-only">Précédent</span>
                         </a>
                         <a class="right carousel-control" href="#monCarousel" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -95,7 +95,7 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Notre carte<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <li><a href="listPizza"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Tï¿½lï¿½charger la carte</a></li>
+                                                <li><a href="listPizza"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Télécharger la carte</a></li>
                                             </li>
                                             <li>
                                                 <li><a href="listPizza"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Voir la carte</a></li>
@@ -111,21 +111,21 @@
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Nos Salades</li>
-                                            <li><a href="#">Salade Cï¿½sar</a></li>
+                                            <li><a href="#">Salade César</a></li>
                                             <li><a href="#">Salade Feta</a></li>
                                             <li>
                                                 <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des salades</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
-                                            <li class="dropdown-header"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Nos Pï¿½tes</li>
-                                            <li><a href="#">pï¿½tes carbonara</a></li>
-                                            <li><a href="#">pï¿½tes bolognese</a></li>
+                                            <li class="dropdown-header"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> Nos Pâtes</li>
+                                            <li><a href="#">pâtes carbonara</a></li>
+                                            <li><a href="#">pâtes bolognese</a></li>
                                             <li>
-                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des pï¿½tes</a></li>
+                                                <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des pâtes</a></li>
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Nos Viandes</li>
-                                            <li><a href="#">Tartare de boeuf coupï¿½ au couteau</a></li>
+                                            <li><a href="#">Tartare de boeuf coupé au couteau</a></li>
                                             <li><a href="#">Carpaccio de boeuf<span class="label label-danger">En rupture</span></a></li>
                                             <li>
                                                 <li><a href="Menu.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Voir la carte des viandes</a></li>
@@ -134,6 +134,7 @@
                                     </li>
                                     <li><a href="javascript:chargeHTML('ContactezNous')"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Contactez-nous</a></li>
                                     <li><a href="login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se connecter</a></li>
+                               		<li><a href="deconnection"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Se deconnecter</a></li>
                                 </ul>
                             </div>
                             <!-- /.navbar-collapse -->
@@ -174,13 +175,13 @@
                     <h1>Liste des pizzas disponible</h1>
                     <p>Notre amour pour les pizzas se ressent jusque dans vos assiettes.</p>
 
-  					<table class="table">
+  					<table id ="table" class="table">
   						<thead>
   							<tr>
   								 <th>Code</th>
   								 <th>Nom</th>
   								 <th>Prix</th>
-  								 <th>Catï¿½gorie</th>
+  								 <th>Catégorie</th>
   								 <th>Editer</th>
   								 <th>Supprimer</th>
   							</tr>
@@ -224,9 +225,12 @@
 			<script type="text/javascript">
 			function surligneText2(){
 			    var userInput = document.getElementById('searchinput').value;
-			    if(userInput.eval(document.getElementById('surligne').innerHTML.value)){
-			    	document.getElementById('surligne').style.display= "background-color: gold;";
-			    	
+			    var arrayLignes = document.getElementById("table").rows;
+			    for (int i; i<arrayLignes.lenght; i++){
+				    if(userInput == (document.getElementsByTagName('table')[0].getElementsByTagName('tr')[i].cells[1].innerHTML)){
+				    	document.getElementsByTagName('table')[0].getElementsByTagName('tr')[i].style.backgroundColor = goldenrod;
+				    	
+				    }
 			    }
 			    
 			}
