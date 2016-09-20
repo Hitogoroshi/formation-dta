@@ -3,6 +3,7 @@ package dta;
 import java.io.IOException;
 import java.util.Calendar;
 
+import javax.ejb.EJB;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -15,10 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.StockagePizzaJpa;
+import fr.pizzeria.service.PizzaServiceEJB;
 
 @WebServlet("/newpizza")
 public class NouvellePizzaController extends HttpServlet {
+
+	@EJB
+	private PizzaServiceEJB stockagePizza;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,9 +45,8 @@ public class NouvellePizzaController extends HttpServlet {
 		CategoriePizza categorie = CategoriePizza.valueOf(req.getParameter("categorie"));
 		Pizza nouvellePizza = new Pizza(code, nom, prix, categorie);
 		nouvellePizza.setUrlImage(nom + ".jpg");
-		StockagePizzaJpa pizza = new StockagePizzaJpa();
 		try {
-			pizza.save(nouvellePizza);
+			stockagePizza.save(nouvellePizza);
 			CreerPizzaEvent creerPizzaEvent = new CreerPizzaEvent(nouvellePizza, Calendar.getInstance());
 			creerEvent.fire(creerPizzaEvent);
 			resp.getWriter().write("Pizza ajouter avec succes");

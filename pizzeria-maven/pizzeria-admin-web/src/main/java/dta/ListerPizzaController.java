@@ -3,7 +3,7 @@ package dta;
 import java.io.IOException;
 import java.util.Collection;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.Stockage;
+import fr.pizzeria.service.PizzaServiceEJB;
 
 @WebServlet("/listPizza")
 public class ListerPizzaController extends HttpServlet {
 
-	@Inject
-	private Stockage<Pizza, String> stockagePizza;
+	@EJB
+	private PizzaServiceEJB stockagePizza;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

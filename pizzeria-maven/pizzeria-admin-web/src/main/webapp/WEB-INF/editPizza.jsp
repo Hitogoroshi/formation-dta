@@ -168,7 +168,7 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="textinput">Nouveau Code Pizza</label>  
 						  <div class="col-md-4">
-						  <input id="textinput" name="newcode" type="text" placeholder="" value="${pizza.code}" class="form-control input-md" required="">
+						  <input id="textinput" name="newcode" type="text" placeholder="" value="${pizza.code}" maxlength="3" class="form-control input-md" required="">
 						    
 						  </div>
 						</div>

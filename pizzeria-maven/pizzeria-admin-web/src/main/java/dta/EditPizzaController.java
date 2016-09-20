@@ -3,6 +3,7 @@ package dta;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.Stockage;
-import fr.pizzeria.service.StockagePizzaJpa;
+import fr.pizzeria.service.PizzaServiceEJB;
 
 @WebServlet("/editPizza")
 public class EditPizzaController extends HttpServlet {
+
+	@EJB
+	private PizzaServiceEJB stockagePizza;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/editPizza.jsp");
 
-		Stockage<Pizza, String> stockagePizza = new StockagePizzaJpa();
 		Collection<Pizza> listpizza = stockagePizza.findAll();
 		String anciencode = req.getParameter("code");
 
@@ -53,9 +55,8 @@ public class EditPizzaController extends HttpServlet {
 		CategoriePizza categorie = CategoriePizza.valueOf(req.getParameter("categorie"));
 		Pizza nouvellePizza = new Pizza(newcode, nom, prix, categorie);
 		nouvellePizza.setUrlImage(nom + ".jpg");
-		StockagePizzaJpa pizza = new StockagePizzaJpa();
 		try {
-			pizza.update(nouvellePizza, ancienCode);
+			stockagePizza.update(nouvellePizza, ancienCode);
 			resp.getWriter().write("Pizza modifier avec succes");
 			resp.setStatus(201);
 		} catch (ServiceException e) {

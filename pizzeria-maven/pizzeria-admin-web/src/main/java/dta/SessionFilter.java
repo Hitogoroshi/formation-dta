@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter(urlPatterns = { "/*" }, description = "Request login filter")
 public class SessionFilter implements Filter {
 
-	private static final String[] CHEMIN_SANS_AUTH = { "/login", "/dist", "Images", "style.css" };
+	private static final String[] CHEMIN_SANS_AUTH = { "/login", "/dist", "Images", "style.css", "/api" };
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
