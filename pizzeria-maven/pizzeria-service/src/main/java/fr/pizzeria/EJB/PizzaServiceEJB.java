@@ -1,4 +1,4 @@
-package fr.pizzeria.service;
+package fr.pizzeria.EJB;
 
 import java.util.Collection;
 import java.util.List;

@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.EJB.PizzaServiceEJB;
 import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.PizzaServiceEJB;
 
 @WebServlet("/editPizza")
 public class EditPizzaController extends HttpServlet {

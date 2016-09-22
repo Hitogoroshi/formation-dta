@@ -22,14 +22,16 @@ public class StockagePizzaBdD implements Stockage<Pizza, String> {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria?useSSL=false",
 				"root", "");
 				Statement st = connection.createStatement();
-				ResultSet resultat = st.executeQuery("SELECT * FROM PIZZA ORDER BY libelle");) {
+				ResultSet resultat = st.executeQuery("SELECT * FROM PIZZA ORDER BY nom");) {
 
 			while (resultat.next()) {
 				Pizza p = new Pizza();
-				p.setCode(resultat.getString("reference"));
-				p.setNom(resultat.getString("libelle"));
+				p.setCode(resultat.getString("code"));
+				p.setNom(resultat.getString("nom"));
 				p.setPrix(resultat.getBigDecimal("prix").doubleValue());
 				p.setCategorie(CategoriePizza.valueOf(resultat.getString("categorie")));
+				p.setUrlImage(resultat.getString("urlImage"));
+				;
 				listPizzas.add(p);
 			}
 
@@ -46,7 +48,7 @@ public class StockagePizzaBdD implements Stockage<Pizza, String> {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria?useSSL=false",
 				"root", "");
 				PreparedStatement savePizza = connection.prepareStatement(
-						"INSERT INTO PIZZA(reference, libelle, prix, categorie, url_image) VALUES( ?, ?, ?, ?, ?)");) {
+						"INSERT INTO PIZZA(code, nom, prix, categorie, url_image) VALUES( ?, ?, ?, ?, ?)");) {
 
 			savePizza.setString(1, newPizza.getCode());
 			savePizza.setString(2, newPizza.getNom());
@@ -66,7 +68,7 @@ public class StockagePizzaBdD implements Stockage<Pizza, String> {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria?useSSL=false",
 				"root", "");
 				PreparedStatement upPizza = connection.prepareStatement(
-						"UPDATE PIZZA SET reference= ?, libelle= ?, prix=?, categorie=?, url_image= ? WHERE reference=?");) {
+						"UPDATE PIZZA SET code= ?, nom= ?, prix=?, categorie=?, url_image= ? WHERE reference=?");) {
 
 			upPizza.setString(1, editPizza.getCode());
 			upPizza.setString(2, editPizza.getNom());

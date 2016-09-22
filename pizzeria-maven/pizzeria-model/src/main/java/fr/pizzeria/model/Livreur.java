@@ -1,9 +1,6 @@
 package fr.pizzeria.model;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
 import fr.pizzeria.exception.DebitException;
 
@@ -13,13 +10,19 @@ public class Livreur extends AbstractPersonne {
 	public static final String PREFIX_ID = "L";
 
 	private double montantDecouvertAutoriser;
-	@OneToMany(mappedBy = "livreurCommande")
-	private Collection<Commande> commande;
+	/*
+	 * @OneToMany(mappedBy = "livreurCommande") private Collection<Commande>
+	 * commande;
+	 */
 
-	public Livreur(int id, String nom, String prenom, double solde, String login, String motDePasse,
+	public Livreur(String nom, String prenom, double solde, String login, String motDePasse,
 			double MontantDecouvertAutoriser) {
-		super(id, nom, prenom, solde, login, motDePasse);
+		super(nom, prenom, solde, login, motDePasse);
 		this.montantDecouvertAutoriser = MontantDecouvertAutoriser;
+
+	}
+
+	public Livreur() {
 
 	}
 

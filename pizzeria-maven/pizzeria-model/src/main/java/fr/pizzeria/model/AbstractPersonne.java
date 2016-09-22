@@ -85,13 +85,16 @@ public abstract class AbstractPersonne implements CompteStat {
 		this.motDePasse = motDePasse;
 	}
 
-	public AbstractPersonne(int id, String nom, String prenom, double solde, String login, String motDePasse) {
+	public AbstractPersonne(String nom, String prenom, double solde, String login, String motDePasse) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.solde = solde;
 		this.login = login;
 		this.motDePasse = motDePasse;
+	}
+
+	public AbstractPersonne() {
+		super();
 	}
 }

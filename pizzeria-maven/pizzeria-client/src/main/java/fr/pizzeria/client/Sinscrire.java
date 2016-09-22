@@ -17,13 +17,12 @@ public class Sinscrire extends ActionClient {
 		System.out.println("Veuillez saisir votre prenom");
 		String prenom = helper.getScanner().next();
 		double solde = 0;
-		Integer id = 0;
 		System.out.println("Veuillez saisir votre email");
 		String login = helper.getScanner().next();
 		System.out.println("Veuillez saisir votre mot de passe");
 		String motDePasse = helper.getScanner().next();
 		// creation du nouveau Client
-		Client nouveauClient = new Client(id, nom, prenom, solde, login, motDePasse);
+		Client nouveauClient = new Client(nom, prenom, solde, login, motDePasse);
 		helper.getStockageClient().save(nouveauClient);
 
 		System.out.println("Compte cree avec succes" + "\n");

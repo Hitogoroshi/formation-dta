@@ -5,6 +5,7 @@
     <groupId>dta</groupId>
     <artifactId>pizzeria-maven</artifactId>
     <version>1.0</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>pizzeria-admin-web</artifactId>
   <packaging>war</packaging>

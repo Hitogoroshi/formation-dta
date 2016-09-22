@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.EJB.PizzaServiceEJB;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.PizzaServiceEJB;
 
 @WebServlet("/listPizza")
 public class ListerPizzaController extends HttpServlet {

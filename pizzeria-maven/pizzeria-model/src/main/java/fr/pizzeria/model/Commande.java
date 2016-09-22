@@ -1,11 +1,14 @@
 package fr.pizzeria.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -16,6 +19,7 @@ import javax.persistence.ManyToOne;
 public class Commande {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String numeroCommande;
 	@Enumerated(EnumType.STRING)
@@ -32,7 +36,7 @@ public class Commande {
 
 	@ManyToMany
 	@JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "client_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
-	private Collection<Pizza> Pizza;
+	private Collection<Pizza> pizza;
 
 	public Integer getId() {
 		return id;
@@ -50,6 +54,30 @@ public class Commande {
 		this.numeroCommande = numeroCommande;
 	}
 
+	public Client getClientCommande() {
+		return clientCommande;
+	}
+
+	public void setClientCommande(Client clientCommande) {
+		this.clientCommande = clientCommande;
+	}
+
+	public Livreur getLivreurCommande() {
+		return livreurCommande;
+	}
+
+	public void setLivreurCommande(Livreur livreurCommande) {
+		this.livreurCommande = livreurCommande;
+	}
+
+	public Collection<Pizza> getPizza() {
+		return pizza;
+	}
+
+	public void setPizza(Collection<Pizza> pizza) {
+		this.pizza = pizza;
+	}
+
 	public StatutCommande getStatut() {
 		return statut;
 	}
@@ -62,16 +90,28 @@ public class Commande {
 		return dateCommande;
 	}
 
+	public String getDateSympa() {
+		return new SimpleDateFormat("dd/MM/yyyy HH:mm").format(dateCommande.getTime());
+	}
+
 	public void setDateCommande(Calendar dateCommande) {
 		this.dateCommande = dateCommande;
 	}
 
-	public Commande(String numeroCommande, StatutCommande statut, Calendar dateCommande, Integer id) {
+	public Commande(String numeroCommande, StatutCommande statut, Calendar dateCommande, Client clientCommande,
+			Livreur livreurCommande, Collection<Pizza> Pizza) {
 		super();
 		this.numeroCommande = numeroCommande;
 		this.statut = statut;
 		this.dateCommande = dateCommande;
-		this.id = id;
+		this.clientCommande = clientCommande;
+		this.livreurCommande = livreurCommande;
+		this.pizza = Pizza;
+	}
+
+	public Commande() {
+		super();
+
 	}
 
 }

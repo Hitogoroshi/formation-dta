@@ -11,14 +11,14 @@ public class StockageClient implements Stockage<Client, Integer> {
 	public Map<Integer, Client> clients = new TreeMap<>();
 
 	public StockageClient() {
-		this.clients.put(1, new Client(1, "Hunter", "David", 30.50, "login", "motdepasse"));
-		this.clients.put(2, new Client(2, "Gaia", "Julie", 345.00, "login", "motdepasse"));
-		this.clients.put(3, new Client(3, "Martin", "Jules", 11.50, "login", "motdepasse"));
-		this.clients.put(4, new Client(4, "Durand", "Jeremy", 1000.00, "login", "motdepasse"));
-		this.clients.put(5, new Client(5, "Famille", "Isabelle", 60.50, "login", "motdepasse"));
-		this.clients.put(6, new Client(6, "Figaro", "Giovanni", 4.00, "login", "motdepasse"));
-		this.clients.put(7, new Client(7, "Sovari", "Erza", 50.50, "login", "motdepasse"));
-		this.clients.put(8, new Client(8, "Legrand", "Guillaume", 26.00, "login", "motdepasse"));
+		this.clients.put(1, new Client("Hunter", "David", 30.50, "login", "motdepasse"));
+		this.clients.put(2, new Client("Gaia", "Julie", 345.00, "login", "motdepasse"));
+		this.clients.put(3, new Client("Martin", "Jules", 11.50, "login", "motdepasse"));
+		this.clients.put(4, new Client("Durand", "Jeremy", 1000.00, "login", "motdepasse"));
+		this.clients.put(5, new Client("Famille", "Isabelle", 60.50, "login", "motdepasse"));
+		this.clients.put(6, new Client("Figaro", "Giovanni", 4.00, "login", "motdepasse"));
+		this.clients.put(7, new Client("Sovari", "Erza", 50.50, "login", "motdepasse"));
+		this.clients.put(8, new Client("Legrand", "Guillaume", 26.00, "login", "motdepasse"));
 
 	}
 

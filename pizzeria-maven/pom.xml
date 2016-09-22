@@ -11,6 +11,7 @@
 <module>pizzeria-service</module>
 <module>pizzeria-client</module>
 <module>pizzeria-admin-web</module>
+<module>pizzeria-spring</module>
 </modules>
 
 <properties>
@@ -47,7 +48,7 @@
 	    <artifactId>reflections</artifactId>
 	    <version>${reflection.vers}</version>
 	</dependency>
-		<dependency>
+	<dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
 	    <version>4.12</version>
@@ -96,6 +97,13 @@
    <groupId>javax</groupId>
    <artifactId>javaee-api</artifactId>
    <version>7.0</version>
+</dependency>
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-framework-bom</artifactId>
+	<version>4.2.6.RELEASE</version>
+	<type>pom</type>
+	<scope>import</scope>
 </dependency>
 </dependencies>
 </dependencyManagement>

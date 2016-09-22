@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.service.PizzaServiceEJB;
+import fr.pizzeria.EJB.PizzaServiceEJB;
 
 @WebServlet("/deletePizza")
 public class DeletePizzaController extends HttpServlet {
