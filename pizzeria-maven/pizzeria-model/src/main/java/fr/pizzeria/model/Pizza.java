@@ -80,6 +80,15 @@ public class Pizza {
 		this.categorie = categorie;
 	}
 
+	public Pizza(String code, String nom, double prix, CategoriePizza categorie, String urlImage) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = categorie;
+		this.urlImage = urlImage;
+	}
+
 	public Pizza() {
 
 	}

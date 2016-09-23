@@ -13,12 +13,9 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
-import org.springframework.stereotype.Component;
-
 import fr.pizzeria.exception.ServiceException;
 import fr.pizzeria.model.Pizza;
 
-@Component
 public class StockagePizzaJpa implements Stockage<Pizza, String> {
 
 	private EntityManagerFactory emf;
